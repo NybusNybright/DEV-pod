@@ -1,0 +1,41 @@
+# Ignore everything by default
+*
+
+# ✅ Allow core tracked files
+!setup.sh
+!launcher.py
+!.gitignore
+
+# ✅ Allow scripts
+!scripts/
+!scripts/*.sh
+!scripts/*.py
+
+# ✅ Allow static UI files
+!static/
+!static/*.png
+!static/*.svg
+!static/*.jpg
+
+# ✅ Allow SSH config folder (but not runtime updates)
+!ssh_config/
+!ssh_config/config
+
+# ❌ ignore
+ComfyUI/
+ComfyUI/**
+touch/
+touch/**
+sd-webui/
+sd-webui/**
+
+
+# ❌ Always ignore pod runtime output and logs
+output/
+*.log
+*.tmp
+__pycache__/
+*.pyc
+*.pyo
+*.sqlite3
+*.db

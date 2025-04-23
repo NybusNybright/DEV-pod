@@ -1,0 +1,31 @@
+bash -c '
+echo "🚀 Initializing pod startup command"
+cd /workspace
+
+while [ -z "$RUNPOD_POD_ID" ]; do sleep 1; done
+
+
+apt update && apt install -y git wget curl nano zip ffmpeg lsof tar psmisc rsync 
+
+if [ -f /workspace/.setup_done ]; then
+  echo "✅ Setup already completed. Skipping..." && exit 0 
+fi
+
+rm -rf /workspace/setup 
+git clone https://${GIT_PAT}@github.com/NybusNybright/runpod_NoVenv.git /workspace/temp
+echo "✅ Repo cloned successfully"
+
+cp -r /workspace/temp/PROD_FILES /workspace/setup
+
+if [ -d /workspace/setup ] && [ "$(ls -A /workspace/setup)" ]; then
+    rm -rf /workspace/temp
+else
+    echo "❌ Copy failed or /workspace/setup is empty. Aborting cleanup." && exit 1
+fi
+
+bash /workspace/setup/setup.sh
+echo "🎉🎉🎉🎉🎉 Setup successful 🎉🎉🎉🎉🎉"
+'
+
+
+# optionable apt packages libsm6 libxext6 

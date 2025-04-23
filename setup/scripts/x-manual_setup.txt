@@ -1,0 +1,9 @@
+cd /workspace/ && 
+rm -rf rp-setup && 
+git clone https://${GIT_PAT}@github.com/NybusNybright/runpod_noVenv.git && \
+cd /workspace/setup/ && 
+chmod +x setup.sh && 
+./setup.sh
+
+
+cd /workspace/ && rm -rf runpod_noVenv && git clone https://... && cd runpod_noVenv/setup && ./setup.sh

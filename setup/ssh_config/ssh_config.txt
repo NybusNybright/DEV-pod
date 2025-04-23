@@ -1,0 +1,5 @@
+Host runpod
+  HostName 195.26.233.84
+  User root
+  Port 50519
+  IdentityFile ~/.ssh/id_ed25519
